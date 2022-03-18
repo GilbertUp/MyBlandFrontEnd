@@ -45,12 +45,18 @@
                     <div>
                         <span>Title</span>
                         <input type="text" id="title" placeholder="Enter article title" required min="5" minlength="10">
-                    </div>
-                   
+                    
+                   <span></span>
                     <div id="imageField">
                         <span>image</span>
                         <input type="file" name="image" id="image" >
                     </div>
+                    <span></span>
+                    <div>
+                      <span>discription</span>
+                      <textarea id="discription" name="discription" cols="10" rows="4" required minlength="10"></textarea>
+                  </div>
+                    <span></span>
                     <div>
                         <span>Body</span>
                         <textarea id="body" name="body" cols="30" rows="4" required minlength="30"></textarea>
@@ -72,7 +78,7 @@
         </div>
       </section>
       </main>
-       <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase.js"></script>
+       <!-- <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase.js"></script>
       <script type="module">
      import {
         getFirestore,
@@ -189,7 +195,7 @@ document.getElementById("logoutBtn").addEventListener("click",ev=>logout())
     }else document.getElementById("image").required=''
   }
 
-  </script>
+  </script> -->
       </body>
       </html>
      

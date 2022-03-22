@@ -1,76 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-    <link rel="stylesheet" href="main.css" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="index.css" />
-    <title>New article</title>
-  </head>
-  <body>
-    <div style="display: flex; justify-content: space-between; position: fixed; background-color: rgb(88, 93, 161);  padding-left: 20px;">
-      <div class="logo"><em>GilTech</em></div>
-      <div class="nav" style=" left: 20px; margin-left: 400px;">
-        <ul class="list">
-              <li> <a href="dashboard.html"> Dashboard</a></li>
-              <li><a href="new-article.html">New article</a></li>
-              <li><a href="blog.html"> Blog</a></li>
-              <li> <a >
-                  <button id="logoutBtn">
-                      Logout
-                  </button></li>
-              <li>
-                 
-                  </a>
-              </li>
-          </ul>
-      
-      </div>
-        <div class="menu-btn">
-          <i class="fas fa-bars"></i>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <TItle>New article</TItle>
+
+        <link rel="stylesheet" href="dstyle.css">
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="index.css">
+        <script src="../logout.js"></script>
+    </head>
+    <body>
+        <div class="sidebar">
+            <div class="sidebar-brand">
+                <h1><!--<span class="lab la-accusoft">--></span>GilTech</h1>
+            </div>
+            <div class="sidebar-menu">
+                <ul>
+                    <li>
+                        <a href="dash.html"><span class="las la-igloo"></span>
+                        <span>Dashboard</span></a>
+                    </li>
+                    
+                    <li>
+                        <a href="blog.html"><span class="las la-clipboard-list"></span>
+                        <span>Blogs</span></a>
+                     
+                <li>
+                    <a href="new-article.html"><span class="las la-book"></span>
+                    <span>New Post</span></a>
+                </li>
+                        <a href="Messages.html" class="active"><span class="las la-comment"></span>
+                        <span>Messages</span></a>
+                    </li>
+                    <li>
+                        <a href=""><span class="las la-user-circle"></span>
+                        <span>Admins</span></a>
+                    </li>
+                    <li>
+                        <a href="/index.html"><span class="las la-home"></span>
+                        <span>Home</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="las la-sign"></span>
+                        <span onclick="logout()">Log out</span></a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
-    </nav>
+        <div class="main-content">
+        <header>
+            <h1>
+                <label for="">
+                  <span class="las la-bars"></span> 
+                </label>
+                Dashboard
+                
+            </h1>
+            
+            <div class="user-wrapper">
+                <marquee class="mar" behavior="" direction="left">Welcome on GilTech</marquee>
+                <img src="" width="30px" alt="">
+                <div>
+                    <h4>GilTech</h4>
+                    <small>Adimin</small>
+                </div>
+
+            </div>
+        </header>
+        <main>
     <main>
       <section class="container">
-          <div class="card article-card-form">
-            <h3 class="card-title">NEW ARTICLE FORM</h3>
+          <div style="margin-bottom: 50%;" class="card article-card-form">
+           
+            <h3 style="text-align: center;margin-top: 5px;color: black;" class="card-title">NEW ARTICLE FORM</h3>
+          
             <div class="card-body">
                 <form action="#" id="new-article-form" class="form" onsubmit="return submitFunction();">
                     <div>
                         <span>Title</span>
-                        <input type="text" id="title" placeholder="Enter article title" required min="5" minlength="10">
+                        <input style="background-color: rgb(151, 167, 151);" type="text" id="title" placeholder="Enter article title" required min="5" minlength="10">
                     
                    <span></span>
                     <div id="imageField">
                         <span>image</span>
-                        <input type="file" name="image" id="image" >
+                        <input style="background-color: rgb(162, 173, 162);"  type="file" name="image" id="image" >
                     </div>
                     <span></span>
                     <div>
-                      <span>discription</span>
-                      <textarea id="discription" name="discription" cols="10" rows="4" required minlength="10"></textarea>
-                  </div>
+                      <!-- <span>discription</span>
+                      <textarea style="background-color: rgb(162, 173, 162);"  id="discription" name="discription" cols="10" rows="4" required minlength="10"></textarea>
+                  </div>   -->
                     <span></span>
                     <div>
                         <span>Body</span>
-                        <textarea id="body" name="body" cols="30" rows="4" required minlength="30"></textarea>
+                        <textarea style="background-color: rgb(162, 173, 162);" id="body" name="body" cols="30" rows="4" required minlength="30"></textarea>
                     </div>
                     <div>
-                        <span>Tags</span>
-                        <select id="tag" name="tag" required>
-                            <option value="">Select tag</option>
-                            <option value="Tech">Tech</option>
-                            <option value="Business">Business</option>
+                        
                         </select>
                     </div>
                     <div>
-                        <button type="submit" id="submit">Submit</button>
+                        <button style="background-color: rgb(50, 70, 50);;" type="submit" id="submit">Submit</button>
                     </div>
                 </form>
                 <!-- <button onclick="getDataForUpdate(1)">click me</button> -->
@@ -78,47 +108,8 @@
         </div>
       </section>
       </main>
-       <!-- <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase.js"></script>
-      <script type="module">
-     import {
-        getFirestore,
-        doc,
-        getDoc,
-        setDoc,
-        addDoc,
-        collection,
-        updateDoc,
-        deleteDoc,
-        deleteField,
-      } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js";
-      import {
-        getAuth,
-        createUserWithEmailAndPassword,onAuthStateChanged,signOut
-      } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js";
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
-
-      // Your web app's Firebase configuration
-      const firebaseConfig = {
-        apiKey: "AIzaSyBG1ilf246V4WTx6jkYlavkZV3MTDB9bcc",
-        authDomain: "giltech-fbd74.firebaseapp.com",
-        databaseURL: "https://giltech-fbd74-default-rtdb.firebaseio.com",
-        projectId: "giltech-fbd74",
-        storageBucket: "giltech-fbd74.appspot.com",
-        messagingSenderId: "263298913129",
-        appId: "1:263298913129:web:2729ee418f571f50aa63f8",
-      };
-
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      //   const database = getDatabase(app);
-      firebase.initializeApp(firebaseConfig);
-      const auth = getAuth();
-      const db = getFirestore();
-  onAuthStateChanged(auth,(user) => {
-  if (user) {
+       
+  <!-- if (user) {
     // User is signed in, see docs for a list of available properties
     var uid = user.uid;
   
@@ -139,63 +130,14 @@ async function logout()
   // An error happened.
   console.log(error)
 });
-}
-
-  // async function addDataToCollection(uid) {
-  //         //   console.log("ok");
-  //         let ref = doc(db, "posts");
-  //         const docRef = await setDoc(ref, {
-            
-  //           email: email,
-  //           uid: uid,
-            
-  //         })
-  //           .then(() => {
-  //             alert("user Created well done");
-  //             //   window.open("./dashboard/dashboard.html", "_self");
-  //           })
-  //           .catch((error) => alert("Error:" + error));
-  //         console.log(docRef);
-  //       }
-      
-        // document.getElementById("submit").addEventListener("click",event=>{
-        //   let title=document.getElementById("title").value;
-        //   let tag=document.getElementById("tag").value;
-        //   let image=document.getElementById("image").value;
-        //   let body=document.getElementById("body").value;
-        //   if(tag=="" )
-        //   {
-        //     alert("Please select tag!")
-        //     document.getElementById("tag").focus
-        //   }
-        //   else
-        //   {
-        //     addDataToCollection()
-        //   }
-        // })
+} -->
 
 
-document.getElementById("logoutBtn").addEventListener("click",ev=>logout())
-</script>
-<script src="javascript.js"></script>
+
 <script>
   
-  window.onload =getDataForm();
-  function getDataForm(){
-    ;
-    if(localStorage.getItem("id"))
-    {
-      // getDataForUpdate(id);
-      // console.log(id)
-      document.getElementById("title").value=localStorage.getItem("title")
-      document.getElementById("body").value=localStorage.getItem("body")
-      document.getElementById("tag").value=localStorage.getItem("tag")
-      document.getElementById("imageField").style.display="none";
-     
-    }else document.getElementById("image").required=''
-  }
-
-  </script> -->
+</script>
+  
       </body>
       </html>
      

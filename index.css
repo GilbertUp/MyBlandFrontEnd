@@ -114,7 +114,7 @@
     padding-top: 30px;
 }
 .skill-row{
-    display: inline-flex;
+    display: flex;
     justify-content: space-between;
     width: 100%;
     margin-top: 50px;

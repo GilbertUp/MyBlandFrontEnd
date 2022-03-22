@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <TItle>Messages</TItle>
+
+        <link rel="stylesheet" href="dstyle.css">
+        
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="index.css">
+        <script src="../logout.js"></script>
+
+    </head>
+    <body>
+        <div class="sidebar">
+            <div class="sidebar-brand">
+                <h1><!--<span class="lab la-accusoft">--></span>GilTech</h1>
+            </div>
+            <div class="sidebar-menu">
+                <ul>
+                    <li>
+                        <a href="dash.html"><span class="las la-igloo"></span>
+                        <span>Dashboard</span></a>
+                    </li>
+                    
+                    <li>
+                        <a href="blog.html"><span class="las la-clipboard-list"></span>
+                        <span>Blogs</span></a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="#" class="active"><span class="las la-comment"></span>
+                        <span>Messages</span></a>
+                    </li>
+                    <li>
+                        <a href=""><span class="las la-user-circle"></span>
+                        <span>Admins</span></a>
+                    </li>
+                    <li>
+                        <a href="/index.html"><span class="las la-home"></span>
+                        <span>Home</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="las la-sign"></span>
+                        <span onclick="logout()">Log out</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-content">
+        <header>
+            <h1>
+                <label for="">
+                  <span class="las la-bars"></span> 
+                </label>
+                Dashboard
+                
+            </h1>
+            
+            <div class="user-wrapper">
+                <marquee class="mar" behavior="" direction="left">Welcome on GilTech</marquee>
+                <img src="" width="30px" alt="">
+                <div>
+                    <h4>GilTech</h4>
+                    <small>Adimin</small>
+                </div>
+
+            </div>
+        </header>
+        <main>
+            <div class="cards">
+                
+                
+                
+
+
+            </div> 
+            <div class="recent-grid">
+                <!-- <div class="projects">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Messages</h3>
+                           
+                        </div>
+                        <div class="card-body">
+                         <table id="blogs" width="100%">
+                            <thead>
+                                <tr>
+                                    <td>Emails</td>
+                                    <td>Messages</td>
+                                    
+                                    
+                                    
+                                </tr>
+                                   
+                                </table>
+
+                        </div> -->
+
+
+                        <div class="card-body" id="output">
+                            <table >
+                                <thead>
+                                   
+                                        <th>name</th>
+                                        <th>email</th>
+                                        <th>message</th>
+                                        <th>Actions</th>
+                                        <tr>
+                                            <tbody id="posts">
+                        
+                                            </tbody> 
+                                        
+                                    
+                               
+                                </thead>
+                                <tbody id="posts">
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+                
+                </div>
+        </main>
+        </div>
+        
+
+       
+            <!-- <script>
+                async function loadIntoTable(url,table){
+const tableHead= table.querySelector("thead");
+const tableBody= table.querySelector("tbody");
+const response= await fetch(url);
+const data= await response.json();
+console.log(data)
+tableHead.inerHTML = "<tr>/<?tr>"
+tableBody.inerHTML ="";
+for (const headerText of headers){
+   
+} -->
+
+                }
+    <script>           
+//   function getdataOnIndex()  {
+//      var posts_div = document.getElementById("posts");
+//      var dataToDisplay = "";
+//      var requestOptions = {
+//          method: 'GET',
+//          redirect: 'follow'
+        
+//        };
+      
+              
+//        fetch("https://giltechbland.herokuapp.com/api/v1/messages", requestOptions)
+//                 .then(response => response.json())
+//                 .then(result => {
+//                      console.log(result.data.messages)
+                   
+//                         result.data.messages.forEach(element=>{
+//                             dataToDisplay += `
+                
+//                             <td>
+//                                 ${element.name}
+//                             </td>
+//                             <td>
+//                                ${element.email}
+//                             </td>
+//                             <td>
+//                                 ${element.message}
+//                             </td>
+                            
+//                              <td>
+//                                           <button id="delete-message" onclick='delete_message
+//                                          ' class="delete-button">Delete</button>
+                                        
+//                                       </td>
+
+                                
+                                
+                            
+//                         </tr>
+//                         `;
+//                       })
+//                       posts_div.innerHTML = dataToDisplay;
+//                     //  console.log(blogs)
+//                 })
+                
+//                 .catch(error => console.log('error', error));    
+    
+//       } window.onload=getdataOnIndex();
+    
+ 
+</script>
+       
+    </body>
+</html>

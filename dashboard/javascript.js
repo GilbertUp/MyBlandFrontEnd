@@ -42,7 +42,7 @@
 //           .ref("blogs/")
 //           .push()
 //           .set(
-//             {
+//              {
 //               title: title,
 //               body: body,
 //               imageURL: downloadURL,
@@ -156,73 +156,73 @@
 //       }
 //       posts_div.innerHTML = dataToDisplay;
 //     });
-// }
-// function storeData(id, title, body, tag, image) {
-//   // console.log("done");
-//   localStorage.setItem("id", id);
-//   localStorage.setItem("title", title);
-//   localStorage.setItem("body", body);
-//   localStorage.setItem("tag", tag);
-//   localStorage.setItem("image", image);
-// }
+// // }
+// // function storeData(id, title, body, tag, image) {
+// //   // console.log("done");
+// //   localStorage.setItem("id", id);
+// //   localStorage.setItem("title", title);
+// //   localStorage.setItem("body", body);
+// //   localStorage.setItem("tag", tag);
+// //   localStorage.setItem("image", image);
+// // }
 
-// function delete_post(key) {
-//   firebase
-//     .database()
-//     .ref("blogs/" + key)
-//     .remove();
-//   getdata();
-//   // console.log(key);
-// }
+// // function delete_post(key) {
+// //   firebase
+// //     .database()
+// //     .ref("blogs/" + key)
+// //     .remove();
+// //   getdata();
+// //   // console.log(key);
+// // }
 
-// function getDataForUpdate(key) {
-//   firebase
-//     .database()
-//     .ref("blogs/")
-//     .once("value")
-//     .then(function (snapshot) {
-//       //get your posts div
-//       // var posts_div = document.getElementById("posts");
-//       //remove all remaining data in that div
-//       // posts.innerHTML = "";
-//       //get data from firebase
-//       var data = snapshot.val();
-//       // var dataToDisplay = "";
-//       // console.log(data);
-//       //now pass this data to our posts div
-//       //we have to pass our data to for loop to get one by one
-//       //we are passing the key of that post to delete it from database
+// // function getDataForUpdate(key) {
+// //   firebase
+// //     .database()
+// //     .ref("blogs/")
+// //     .once("value")
+// //     .then(function (snapshot) {
+// //       //get your posts div
+// //       // var posts_div = document.getElementById("posts");
+// //       //remove all remaining data in that div
+// //       // posts.innerHTML = "";
+// //       //get data from firebase
+// //       var data = snapshot.val();
+// //       // var dataToDisplay = "";
+// //       // console.log(data);
+// //       //now pass this data to our posts div
+// //       //we have to pass our data to for loop to get one by one
+// //       //we are passing the key of that post to delete it from database
 
-//       // posts_div.innerHTML = dataToDisplay;
-//       console.log(data);
-//     });
-// }
-// function update() {
-//   let key = localStorage.getItem("id");
-//   let title = document.getElementById("title").value;
-//   let body = document.getElementById("body").value;
-//   let tag = document.getElementById("tag").value;
-//   let imageURL = localStorage.getItem("image");
-//   firebase
-//     .database()
-//     .ref("blogs/" + key)
-//     .set(
-//       {
-//         title: title,
-//         body: body,
-//         tag: tag,
-//         imageURL: imageURL,
-//       },
-//       (error) => {
-//         if (error) {
-//           // The write failed...
-//           console.log(error);
-//         } else {
-//           // Data saved successfully!
-//           alert("Data Update well done");
-//           window.open("./blog.html", "_self");
-//         }
-//       }
-//     );
-//   localStorage.clear();
-// }
+// //       // posts_div.innerHTML = dataToDisplay;
+// //       console.log(data);
+// //     });
+// // }
+// // function update() {
+// //   let key = localStorage.getItem("id");
+// //   let title = document.getElementById("title").value;
+// //   let body = document.getElementById("body").value;
+// //   let tag = document.getElementById("tag").value;
+// //   let imageURL = localStorage.getItem("image");
+// //   firebase
+// //     .database()
+// //     .ref("blogs/" + key)
+// //     .set(
+// //       {
+// //         title: title,
+// //         body: body,
+// //         tag: tag,
+// //         imageURL: imageURL,
+// //       },
+// //       (error) => {
+// //         if (error) {
+// //           // The write failed...
+// //           console.log(error);
+// //         } else {
+// //           // Data saved successfully!
+// //           alert("Data Update well done");
+// //           window.open("./blog.html", "_self");
+// //         }
+// //       }
+// //     );
+// //   localStorage.clear();
+// // }

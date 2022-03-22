@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyBrand</title>
     <link rel="stylesheet" href="index.css">
+  <script src="contact-form.js"></script>
+
    
 </head>
 <body>
-    <div style="display: flex; justify-content: space-between; position: fixed; background-color: rgb(88, 93, 161);  padding-left: 20px;z-index: 1;">
+    <div style="display: flex; justify-content: space-between; position: fixed; background-color:rgb(50, 70, 50);  padding-left: 20px;z-index: 1;">
         <div class="logo"><em>GilTech</em></div>
         <div class="menu"> <ul class="list2"><li><a href="#">Menu</a></li></ul></div>
         <div class="nav" style=" left: 20px; margin-left: 400px;">
@@ -44,21 +46,21 @@
         <div class="skill-row">
             <div class="skill-card">
                 <center>
-                    <div class="number" style="background-color: darkblue;">1</div>
+                    <div class="number" style="background-color:rgb(50, 70, 50);">1</div>
                     <h1>Web development</h1>
                     <p>We are best developer in town</p>
                 </center>
             </div>
             <div class="skill-card">
                 <center>
-                    <div class="number" style="background-color: darkblue;">2</div>
+                    <div class="number" style="background-color:rgb(50, 70, 50);">2</div>
                     <h1>UI/UX Design</h1>
                     <p>We are best developer in town</p>
                 </center>
             </div>
             <div class="skill-card">
                 <center>
-                    <div class="number" style="background-color: darkblue;">3</div>
+                    <div class="number" style="background-color: rgb(50, 70, 50);">3</div>
                     <h1>Mobile App</h1>
                     <p>We are best developer in town</p>
                 </center>
@@ -128,10 +130,10 @@
             </div>
             <div class="foot-div">
                 <form id="form"> 
-                    <input type="text" placeholder="Your name...." class="foot-input"/><br/><br/>
-                    <input type="email" placeholder="Your email...." class="foot-input"/><br/><br/><br/>
-                    <textarea id="message" type="text" placeholder="Give us hint...." class="foot-ta"></textarea>
-                    <input type="submit" value="Subscribe" 
+                    <input  type="text" placeholder="Your name...." name="name" id="nameId" class="foot-input"/><br/><br/>
+                    <input type="email" placeholder="Your email...." name="email" id="emailId" class="foot-input"/><br/><br/><br/>
+                    <textarea id="message" type="text" placeholder="Give us hint...." name="message" id="messageId" class="foot-ta"></textarea>
+                    <input type="submit" name="submit" id="sendQuerry" value="Subscribe" 
                     style="
                     padding-left: 10px;
                     padding-right: 10px;
@@ -143,7 +145,7 @@
                 </form>
             </div>
         </section >
-        <script>const fetchBlogs= async()=>{
+        <!-- <script>const fetchBlogs= async()=>{
             await fetch("https://giltechbland.herokuapp.com/api/v1/blogs")
             .then((res)=>res.json())
             .then((json)=>{
@@ -153,9 +155,79 @@
                 return data
           })/api/v1/blogs
          
-         } </script>
-        
+         } </script> -->
+         <script>
+         function getdataOnIndex()  {
+            var posts_div = document.getElementById("posts");
+            var dataToDisplay = "";
+            var requestOptions = {
+                method: 'GET',
+                redirect: 'follow'
+              };
+             
+              
+              fetch("https://giltechbland.herokuapp.com/api/v1/blogs", requestOptions)
+                .then(response => response.json())
+                .then(result => {
+                    console.log(result.data.blogs)
+                   
+                        result.data.blogs.forEach(element=>{
+                            dataToDisplay += `
+                            <div class="skill-card">
+                                 <center>
+                                     <img src="${element.imageURL}"/>
+                                     <h1>${element.title}</h1>
+                                     <p>${element.body}</p>
+                                     
+                                     <button class="like" id="like">Like</button>
+                                     <a href="comment-form.html">  <button class="comment"id="comment">comment</a></button>
+                                 </center>
+                             </div>
 
-  </body>
+                             
+                                         `;
+                        })
+                  
+                        posts_div.innerHTML = dataToDisplay;
+                    //  console.log(blogs)
+                })
+                
+                .catch(error => console.log('error', error));    
+    
+      } window.onload=getdataOnIndex();
+   
+   
+    </script>
+<!-- 
+    <script>
+
+
+
+
+// var myHeaders = new Headers();
+// myHeaders.append("Content-Type", "application/json");
+
+// var raw = JSON.stringify({
+//   "fullName": "gilbert",
+//   "email": "giulzitu@gm`il.com",
+//   "message": "hello let me know how much youy....."
+// });
+
+// var requestOptions = {
+//   method: 'POST',
+//   headers: myHeaders,
+//   body: raw,
+//   redirect: 'follow'
+// };
+
+// fetch("localhost:8000/api/v1/messages", requestOptions)
+//   .then(response => response.text())
+//   .then(result => console.log(result))
+//   .catch(error => console.log('error', error));
+//     </script>
+//     <script> -->
+        
+//     </script>
+
 </body>
 </html>

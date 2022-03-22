@@ -10,26 +10,71 @@
     <link rel="stylesheet" href="main.css" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="dstyle.css" />
+    <script src="../logout.js"></script>
     <title> Blog</title>
   </head>
-  <body>
-    <div style="display: flex; justify-content: space-between; position: fixed; background-color: rgb(88, 93, 161);  padding-left: 20px;">
-      <div class="logo"><em>GilTech</em></div>
-      <div class="nav" style=" left: 20px; margin-left: 400px;">
-        <ul class="list">
-              <li> <a href="dashboard.html"> Dashboard</a></li>
-              <li><a href="new-article.html">New article</a></li>
-              <li><a href="blog.html"> Blog</a></li>
-              <li> <a>
-                  <button id="logoutBtn">
-                      Logout
-                  </button></li>
-              <li>
-                 
-                  </a>
-              </li>
-          </ul>
-      
+
+
+
+       <div class="sidebar">
+        <div class="sidebar-brand">
+            <h1><!--<span class="lab la-accusoft">--></span>GilTech</h1>
+        </div>
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="" class="active"><span class="las la-igloo"></span>
+                    <span>Dashboard</span></a>
+                </li>
+                <a href="blog.html"><span class="las la-clipboard-list"></span>
+                  <span>Blogs</span></a>
+                
+                <li>
+                    <a href="new-article.html"><span class="las la-book"></span>
+                    <span>New Post</span></a>
+                </li>
+               
+                <li>
+                    <a href="Messages.html"><span class="las la-comment"></span>
+                    <span>Messages</span></a>
+                </li>
+                <li>
+                    <a href="#"><span class="las la-user-circle"></span>
+                    <span>Admins</span></a>
+                </li>
+                <li>
+                    <a href="/index.html"><span class="las la-home"></span>
+                    <span>Home</span></a>
+                </li>
+                 <li>
+                        <a href="#"><span class="las la-sign"></span>
+                        <span onclick="logout()">Log out</span></a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+    <!-- <div class="main-content"> -->
+      <header>
+          <h1 style="margin-top: 20px;">
+              <label for="">
+                <span class="las la-bars"></span> 
+              </label>
+            
+              <marquee behavior="" direction="left">Welcome on GilTech   Dashboard</marquee>
+          </h1>
+         
+          <div class="user-wrapper">
+              <img src="./image/1.jpg" width="30px" alt="">
+              <div>
+                  <h4>GilTech</h4>
+                  <small>Adimin</small>
+              </div>
+
+          </div>
+      </header>
+    <div class="main-content">
+    <header>
       </div>
         <div class="menu-btn">
           <i class="fas fa-bars"></i>
@@ -41,15 +86,16 @@
           <div class="card article-card-queries">
             <h3 class="card-title">Blog</h3>
             <div class="card-body">
-                <table>
+                <table class="blogs-table">
                     <thead>
                         <tr>
                             <th>Image</th>
                             <th>Title</th>
+                             <!-- <th>discription</th> --> 
                             <th>Body</th>
-                            <th>Tag</th>
                             <th>Actions</th>
-                        </tr>
+                            
+                            </tr>
                     </thead>
                     <tbody id="posts">
                         
@@ -63,84 +109,105 @@
         </span>
       </footer>
     </main>
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase.js"></script>
-     <script type="module">
-     import {
-        getFirestore,
-        doc,
-        getDoc,
-        setDoc,
-        addDoc,
-        collection,
-        updateDoc,
-        deleteDoc,
-        deleteField,
-      } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js";
-      import {
-        getAuth,
-        createUserWithEmailAndPassword,onAuthStateChanged,signOut
-      } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js";
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
+    
 
-      // Your web app's Firebase configuration
-      const firebaseConfig = {
-        apiKey: "AIzaSyBG1ilf246V4WTx6jkYlavkZV3MTDB9bcc",
-        authDomain: "giltech-fbd74.firebaseapp.com",
-        databaseURL: "https://giltech-fbd74-default-rtdb.firebaseio.com",
-        projectId: "giltech-fbd74",
-        storageBucket: "giltech-fbd74.appspot.com",
-        messagingSenderId: "263298913129",
-        appId: "1:263298913129:web:2729ee418f571f50aa63f8",
-      };
-
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      //   const database = getDatabase(app);
-      firebase.initializeApp(firebaseConfig);
-      const auth = getAuth();
-      const db = getFirestore();
-  onAuthStateChanged(auth,(user) => {
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    var uid = user.uid;
+    <script src="javascript.js"></script>
+    <script>
   
-  } else {
-    // User is signed out
-    window.open("../login.html","_self")
-  }
-});
+      function getdataOnIndex() {
+        localStorage.removeItem("id");
+        localStorage.removeItem("title");
+        localStorage.removeItem("body");
+        localStorage.removeItem("discription");
+        localStorage.removeItem("image");
+        var posts_div = document.getElementById("posts");
+        var dataToDisplay = "";
+        var requestOptions = {
+          method: 'GET',
+          redirect: 'follow'
+        };
+        fetch("https://giltechbland.herokuapp.com/api/v1/blogs", requestOptions)
+          .then(response => response.json())
+          .then(result => {
+            // console.log(result.data.blogs)
+            result.data.blogs.forEach(element => {
+              dataToDisplay += `
+                      <tr>
+                                <td>
+                                    <img src="${element.imageURL}">
+                                </td>
+                                <td>
+                                   ${element.title}
+                                </td>
+                                <td>
+                                    ${element.body}
+                                </td>
+                                <td>
+                                    <div class="flex">
+                                         <a href="new-article.html" onclick="storeData('${element._id}','${element.title}','${element.body}','${element.image}','${element.description}');">
+                                        <button>Update</button>
+                                    </a>
+                                    <a href="#">
+                                        <button id='${element._id}' onclick='delete_post(
+              this.id
+            )' class="delete-button">Delete</button>
+            <a href="#">
+                                        <button id='${element._id}' onclick='comments(
+              this.id
+            )' class="combtn">comments</button>
+            <a href="#">
+                                        <button id='${element._id}' onclick='likes(
+              this.id
+            )' class="blog-id">likes</button>
+                                </td>
+                            </tr>
+                            `;
+            })
+            posts_div.innerHTML = dataToDisplay;
+            //  console.log(blogs)
+          })
+          .catch(error => console.log('error', error));
+  
+      }
+  
+      function storeData(id, title, body, image, discription) {
+        // console.log("done");
+        localStorage.setItem("id", id);
+        localStorage.setItem("title", title);
+        localStorage.setItem("body", body);
+        localStorage.setItem("discription", discription);
+        localStorage.setItem("image", image);
+      }
+  
+      function delete_post(id) {
+        let token = localStorage.getItem("token");
+        console.log(id)
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", token);
+  
+        var requestOptions = {
+          method: 'DELETE',
+          headers: myHeaders,
+          redirect: 'follow'
+        };
+  
+        fetch(`https://giltechbland.herokuapp.com/api/v1/blogs/${id}`, requestOptions)
+          .then(response => response.text())
+          .then(result => {
+            console.log(result)
+            alert("Article deleted well done")
+            getdataOnIndex()
 
-//logout
-async function logout()
-{
-  signOut(auth).then(() => {
-  // Sign-out successful.
-  // window.open("./../login.html","_self")
-  console.log("done")
-}).catch((error) => {
-  // An error happened.
-  console.log(error)
-});
-}
-document.getElementById("logoutBtn").addEventListener("click",ev=>logout())
-</script>
-<script src="javascript.js"></script>
-<script>
- window.onload = function () {
- getdata();
- localStorage. clear();
-};
-</script>
-/script>
-<!-- <script src="javascript.js"></script>
-<script>
- window.onload = function () {
- getdata();
- localStorage. clear();
-};
-</script> -->
+
+          })
+
+        
+      
+        .catch(error => console.log('error', error));
+      }
+      
+      window.onload = getdataOnIndex();
+  
+    </script>
   </body>
 </html>

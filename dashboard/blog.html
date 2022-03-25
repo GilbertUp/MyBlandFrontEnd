@@ -91,7 +91,7 @@
                         <tr>
                             <th>Image</th>
                             <th>Title</th>
-                             <!-- <th>discription</th> --> 
+                             <th>discription</th> 
                             <th>Body</th>
                             <th>Actions</th>
                             
@@ -139,10 +139,12 @@
                                 <td>
                                    ${element.title}
                                 </td>
+                                ${element.description}
                                 <td>
                                     ${element.body}
-                                </td>
-                                <td>
+                                // </td>
+                                // ${element.actions}
+                                // <td>
                                     <div class="flex">
                                          <a href="new-article.html" onclick="storeData('${element._id}','${element.title}','${element.body}','${element.image}','${element.description}');">
                                         <button>Update</button>

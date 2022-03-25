@@ -96,7 +96,7 @@
     <section id="/blog" class="skills">
         <h1 style="padding-top: 200px; "> Gil-<span>Blogs</span></h1>
         <p>We are more like family Checkout trends</p>
-        <div class="skill-row" id="posts">
+        <div style="display: block;" class="skill-row" id="posts">
            
         </div>
     </section>
@@ -145,17 +145,7 @@
                 </form>
             </div>
         </section >
-        <!-- <script>const fetchBlogs= async()=>{
-            await fetch("https://giltechbland.herokuapp.com/api/v1/blogs")
-            .then((res)=>res.json())
-            .then((json)=>{
-
-                console.log(json.data)
-                const data=json.data.blogs
-                return data
-          })/api/v1/blogs
-         
-         } </script> -->
+       
          <script>
          function getdataOnIndex()  {
             var posts_div = document.getElementById("posts");
@@ -177,7 +167,8 @@
                                  <center>
                                      <img src="${element.imageURL}"/>
                                      <h1>${element.title}</h1>
-                                     <p>${element.body}</p>
+                                     <p>${element.discption}<p>
+                                        <p>${element.body}</p>
                                      
                                      <button class="like" id="like">Like</button>
                                      <a href="comment-form.html">  <button class="comment"id="comment">comment</a></button>
@@ -227,7 +218,75 @@
 //     </script>
 //     <script> -->
         
-//     </script>
+  <!-- </script> -->
+
+  <script>
+      
+      
+    function getDataForm() {
+      if (localStorage.getItem("id")) {
+        // getDataForUpdate(id);
+        // console.log(id)
+        document.getElementById("nameId").value = localStorage.getItem("name")
+        document.getElementById("emailId").value = localStorage.getItem("email")
+        document.getElementById("MessageId").value = localStorage.getItem("message")
+        // document.getElementById("imageField").style.display = "none";
+
+    //   } else {
+    //     document.getElementById("image").required = '';
+    //     // console.log("nooo")
+    //   }
+    }
+    getDataForm();
+    let token = localStorage.getItem("token");
+    async function addDataToCollection(name, email, message) {
+        var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
+var raw = JSON.stringify({
+  "fullName": "gilbert",
+  "email": "giulzitu@gm`il.com",
+  "message": "hello let me know how much youy....."
+});
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch("localhost:8000/api/v1/messages", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+      fetch("https://giltechbland.herokuapp.com/api/v1/messages", requestOptions)
+        .then(response => response.json())
+        .then(result => {
+          console.log(result)
+          alert("message send ")
+          location.href = 'index.html'
+
+        })
+        .catch(error => console.log('error', error));
+    }
+
+    document.getElementById("submit").addEventListener("submit", event => {
+      event.preventDefault()
+      let title = document.getElementById("nameId").value;
+      let discription = document.getElementById("emailId").value;
+      let image = document.getElementById("messageId").value;
+      
+      if (id) {
+        update(id, title, discription, body)
+      }
+      else {
+
+        addDataToCollection(title, discription, image, body)
+      }
+
+
+    })
 
 </body>
 </html>

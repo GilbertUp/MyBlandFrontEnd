@@ -114,10 +114,16 @@
     padding-top: 30px;
 }
 .skill-row{
-    display: flex;
-    justify-content: space-between;
+    display: block;
+    text-align: center;
+    align-items: center;
     width: 100%;
     margin-top: 50px;
+    border: none;
+}
+.skill-row{
+    
+    text-overflow: inherit;
 }
 .skill-row .number{
     background-color: rgb(218, 214, 214);
@@ -130,8 +136,9 @@
     margin-top: -35px;
 }
 .skill-card{
-    background-color: rgb(218, 214, 214);
-    width: 30%;
+    display: inline-block;
+    background-color:white;
+    width: 100%;
     padding: 10px;
     border-radius: 10px ;
     border: 2px solid rgb(218, 214, 214);

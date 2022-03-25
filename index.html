@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyBrand</title>
     <link rel="stylesheet" href="index.css">
-  <script src="contact-form.js"></script>
+  <script src="sendMessage.js"></script>
 
    
 </head>
@@ -129,11 +129,11 @@
                 </ul>
             </div>
             <div class="foot-div">
-                <form id="form"> 
+                <form id="contactForm"> 
                     <input  type="text" placeholder="Your name...." name="name" id="nameId" class="foot-input"/><br/><br/>
                     <input type="email" placeholder="Your email...." name="email" id="emailId" class="foot-input"/><br/><br/><br/>
                     <textarea id="message" type="text" placeholder="Give us hint...." name="message" id="messageId" class="foot-ta"></textarea>
-                    <input type="submit" name="submit" id="sendQuerry" value="Subscribe" 
+                    <input type="submit" name="sendQuerry" id="sendQuerry" value="sendQuerry" 
                     style="
                     padding-left: 10px;
                     padding-right: 10px;
@@ -167,7 +167,9 @@
                                  <center>
                                      <img src="${element.imageURL}"/>
                                      <h1>${element.title}</h1>
-                                     <p>${element.discption}<p>
+                                     <br>
+                                     <h2>${element.description}<h2>
+                                        <br>
                                         <p>${element.body}</p>
                                      
                                      <button class="like" id="like">Like</button>
@@ -189,104 +191,9 @@
    
    
     </script>
-<!-- 
-    <script>
 
-
-
-
-// var myHeaders = new Headers();
-// myHeaders.append("Content-Type", "application/json");
-
-// var raw = JSON.stringify({
-//   "fullName": "gilbert",
-//   "email": "giulzitu@gm`il.com",
-//   "message": "hello let me know how much youy....."
-// });
-
-// var requestOptions = {
-//   method: 'POST',
-//   headers: myHeaders,
-//   body: raw,
-//   redirect: 'follow'
-// };
-
-// fetch("localhost:8000/api/v1/messages", requestOptions)
-//   .then(response => response.text())
-//   .then(result => console.log(result))
-//   .catch(error => console.log('error', error));
-//     </script>
-//     <script> -->
-        
-  <!-- </script> -->
-
-  <script>
       
       
-    function getDataForm() {
-      if (localStorage.getItem("id")) {
-        // getDataForUpdate(id);
-        // console.log(id)
-        document.getElementById("nameId").value = localStorage.getItem("name")
-        document.getElementById("emailId").value = localStorage.getItem("email")
-        document.getElementById("MessageId").value = localStorage.getItem("message")
-        // document.getElementById("imageField").style.display = "none";
-
-    //   } else {
-    //     document.getElementById("image").required = '';
-    //     // console.log("nooo")
-    //   }
-    }
-    getDataForm();
-    let token = localStorage.getItem("token");
-    async function addDataToCollection(name, email, message) {
-        var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
-
-var raw = JSON.stringify({
-  "fullName": "gilbert",
-  "email": "giulzitu@gm`il.com",
-  "message": "hello let me know how much youy....."
-});
-
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: raw,
-  redirect: 'follow'
-};
-
-fetch("localhost:8000/api/v1/messages", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-      fetch("https://giltechbland.herokuapp.com/api/v1/messages", requestOptions)
-        .then(response => response.json())
-        .then(result => {
-          console.log(result)
-          alert("message send ")
-          location.href = 'index.html'
-
-        })
-        .catch(error => console.log('error', error));
-    }
-
-    document.getElementById("submit").addEventListener("submit", event => {
-      event.preventDefault()
-      let title = document.getElementById("nameId").value;
-      let discription = document.getElementById("emailId").value;
-      let image = document.getElementById("messageId").value;
-      
-      if (id) {
-        update(id, title, discription, body)
-      }
-      else {
-
-        addDataToCollection(title, discription, image, body)
-      }
-
-
-    })
-
+  
 </body>
 </html>

@@ -91,7 +91,7 @@
                         <tr>
                             <th>Image</th>
                             <th>Title</th>
-                             <th>discription</th> 
+                             <th>description</th> 
                             <th>Body</th>
                             <th>Actions</th>
                             
@@ -118,7 +118,7 @@
         localStorage.removeItem("id");
         localStorage.removeItem("title");
         localStorage.removeItem("body");
-        localStorage.removeItem("discription");
+        localStorage.removeItem("description");
         localStorage.removeItem("image");
         var posts_div = document.getElementById("posts");
         var dataToDisplay = "";
@@ -134,17 +134,19 @@
               dataToDisplay += `
                       <tr>
                                 <td>
-                                    <img src="${element.imageURL}">
+                                    <img src="${element.photo}">
                                 </td>
                                 <td>
-                                   ${element.title}
+                                  ${element.title} 
                                 </td>
+                                <td>
                                 ${element.description}
+                                </td>
                                 <td>
                                     ${element.body}
-                                // </td>
-                                // ${element.actions}
-                                // <td>
+                                </td>
+                               
+                                <td>
                                     <div class="flex">
                                          <a href="new-article.html" onclick="storeData('${element._id}','${element.title}','${element.body}','${element.image}','${element.description}');">
                                         <button>Update</button>
@@ -172,12 +174,12 @@
   
       }
   
-      function storeData(id, title, body, image, discription) {
+      function storeData(id, title, body, image, description) {
         // console.log("done");
         localStorage.setItem("id", id);
         localStorage.setItem("title", title);
         localStorage.setItem("body", body);
-        localStorage.setItem("discription", discription);
+        localStorage.setItem("description", description);
         localStorage.setItem("image", image);
       }
   

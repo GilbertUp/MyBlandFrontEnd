@@ -48,6 +48,7 @@
                 if (resp.status == 200) {
                     swal('success', data.message, 'success').then(() => {
                         localStorage.setItem('token', 'Bearer '+ data.token)
+                        localStorage.setItem("role",data.role)
                         console.log(data.role)
                         if (data.role == 'admin') {
                             location.href = './dashboard/dash.html'

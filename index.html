@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyBrand</title>
     <link rel="stylesheet" href="index.css">
-  <script src="sendMessage.js"></script>
+  <!-- <script src="./sendMessage.js"></script> -->
 
    
 </head>
@@ -132,7 +132,7 @@
                 <form id="contactForm"> 
                     <input  type="text" placeholder="Your name...." name="name" id="nameId" class="foot-input"/><br/><br/>
                     <input type="email" placeholder="Your email...." name="email" id="emailId" class="foot-input"/><br/><br/><br/>
-                    <textarea id="message" type="text" placeholder="Give us hint...." name="message" id="messageId" class="foot-ta"></textarea>
+                    <textarea  type="text" placeholder="Give us hint...." name="message" id="messageId" class="foot-ta"></textarea>
                     <input type="submit" name="sendQuerry" id="sendQuerry" value="sendQuerry" 
                     style="
                     padding-left: 10px;
@@ -165,17 +165,20 @@
                             dataToDisplay += `
                             <div class="skill-card">
                                  <center>
-                                     <img src="${element.imageURL}"/>
+                                     <img src="${element.photo}"/>
                                      <h1>${element.title}</h1>
                                      <br>
                                      <h2>${element.description}<h2>
                                         <br>
                                         <p>${element.body}</p>
                                      
-                                     <button class="like" id="like">Like</button>
-                                     <a href="comment-form.html">  <button class="comment"id="comment">comment</a></button>
-                                 </center>
-                             </div>
+                                     <div>   <form>
+                            <textarea  style="width: 200px;height: 40px; background-color:rgb(183, 214, 224);" type="text" placeholder="comment...." class="foot-ta"></textarea>
+                            <button  style="width: 50px;height: 30px; background-color:rgb(183, 214, 224); border-radious:10px"    id="sendBtn">send
+        
+        </button>
+        </form>
+                       </div>      
 
                              
                                          `;
@@ -192,7 +195,49 @@
    
     </script>
 
-      
+      <script>
+
+const apiUrl = 'https://giltechbland.herokuapp.com/'
+const messageFormData = () => {
+    const fullName = document.getElementById('nameId').value
+    const email = document.getElementById('emailId').value
+    
+    const message = document.getElementById('messageId').value
+    const messageData = {fullName, email, message}
+    return messageData
+}
+const clearForm = () => {
+    const contactForm = document.getElementById('contactForm')
+    contactForm.reset()
+    return false
+ }
+const sendQuerry = document.getElementById('sendQuerry')
+sendQuerry.addEventListener('click', async (e) => {
+    //  postNewQuerry()
+    e.preventDefault();
+    console.log("clicked");
+  try{
+   const response =  await  fetch(apiUrl + "api/v1/messages", {
+        method: 'POST',
+       headers: {
+            'Content-Type': 'application/json',
+             'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+           fullName: messageFormData().fullName,
+           email: messageFormData().email,
+          
+           message: messageFormData().message
+        })
+    })
+    const data = await response.json()
+    console.log(data)
+   }catch(error){
+     console.log(error);
+   }
+})
+
+      </script>
       
   
 </body>

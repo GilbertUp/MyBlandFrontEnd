@@ -1,8 +1,8 @@
 
 function isLoginedIn()
 {
-    let token = localStorage.getItem("token");
-    if(token==null)
+    let role = localStorage.getItem("role");
+    if(role!=='admin')
     {
         location.href = '../login.html'
     }
@@ -15,7 +15,7 @@ isLoginedIn()
   window.location.reload();
 }
 
-document.getElementById("logoutBtn").addEventListener("click",ev=>logout())
+ document.getElementById("logoutBtn").addEventListener("click",ev=>logout())
 
 
   

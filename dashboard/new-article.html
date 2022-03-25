@@ -33,17 +33,14 @@
                         <a href="Messages.html" class="active"><span class="las la-comment"></span>
                         <span>Messages</span></a>
                     </li>
-                    <li>
-                        <a href=""><span class="las la-user-circle"></span>
-                        <span>Admins</span></a>
-                    </li>
+                    
                     <li>
                         <a href="/index.html"><span class="las la-home"></span>
                         <span>Home</span></a>
                     </li>
                     <li>
-                        <a href="#"><span class="las la-sign"></span>
-                        <span onclick="logout()">Log out</span></a>
+                        <a href="#" id="logoutBtn" ><span class="las la-sign"></span>
+                        <span >Log out</span></a>
                     </li>
                 </ul>
             </div>
@@ -138,7 +135,7 @@
               "title": title,
               "description": description,
               "body": body,
-              "photo": image
+              "photo": image,
             });
       
             var requestOptions = {
@@ -163,7 +160,7 @@
             event.preventDefault()
             let title = document.getElementById("title").value;
             let description = document.getElementById("description").value;
-            let image = document.getElementById("image").value;
+            let photo = document.getElementById("image").value;
             let body = document.getElementById("body").value;
             let id = localStorage.getItem('id');
             if (id) {
@@ -171,7 +168,7 @@
             }
             else {
       
-              addDataToCollection(title, description, image, body)
+              addDataToCollection(title, description, photo, body)
             }
       
       
@@ -199,7 +196,7 @@
             fetch(`https://giltechbland.herokuapp.com/api/v1/blogs/${id}`, requestOptions)
               .then(response => response.text())
               .then(result => {
-                console.log(result)
+                // console.log(result)
                 alert("Article updated well done")
                 location.href = '/dashboard/blog.html'
               })

@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="main.css">
         <link rel="stylesheet" href="index.css">
         <script src="../logout.js"></script>
+        <script src="./javascript.js"></script>
 
     </head>
     <body>
@@ -33,17 +34,14 @@
                         <a href="#" class="active"><span class="las la-comment"></span>
                         <span>Messages</span></a>
                     </li>
-                    <li>
-                        <a href=""><span class="las la-user-circle"></span>
-                        <span>Admins</span></a>
-                    </li>
+                    
                     <li>
                         <a href="/index.html"><span class="las la-home"></span>
                         <span>Home</span></a>
                     </li>
                     <li>
-                        <a href="#"><span class="las la-sign"></span>
-                        <span onclick="logout()">Log out</span></a>
+                        <a href="#" id="logoutBtn" ><span class="las la-sign"></span>
+                        <span >Log out</span></a>
                     </li>
                 </ul>
             </div>
@@ -76,46 +74,21 @@
 
 
             </div> 
-            <div class="recent-grid">
-                <!-- <div class="projects">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3>Messages</h3>
-                           
-                        </div>
-                        <div class="card-body">
-                         <table id="blogs" width="100%">
-                            <thead>
-                                <tr>
-                                    <td>Emails</td>
-                                    <td>Messages</td>
-                                    
-                                    
-                                    
-                                </tr>
-                                   
-                                </table>
+           
 
-                        </div> -->
-
-
-                        <div class="card-body" id="output">
+                        <div class="card-body" id=" posts_div">
                             <table >
                                 <thead>
-                                   
+                                    <tr>
                                         <th>name</th>
                                         <th>email</th>
-                                        <th>message</th>
-                                        <th>Actions</th>
-                                        <tr>
-                                            <tbody id="posts">
-                        
-                                            </tbody> 
+                                         <th>message</th> 
                                         
-                                    
-                               
+                                        <th>Actions</th>
+                                        
+                                        </tr>
                                 </thead>
-                                <tbody id="posts">
+                                <tbody id="messages">
                                     
                                 </tbody>
                             </table>
@@ -127,74 +100,88 @@
                 </div>
         </main>
         </div>
+        <script>
+            let norows = 0
+function getdataOnIndex()  {
+    let posts_div = document.getElementById("messages");
+    let dataToDisplay= "";
+    let requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      };
+      fetch("https://giltechbland.herokuapp.com/api/v1/messages", requestOptions)
+               .then(response => response.json())
+               .then(result => {
+                //   console.log(result.result);
+                result.data.messages.forEach(element => {
+              dataToDisplay += `
+                 <tr>
+                  
+                           <td>
+                               ${element.fullName}
+                           </td>
+                           <td>
+                              ${element.email}
+                           </td>
+                           
+                           <td>
+                           ${element.message}
+                       </td>
+                           <td>
+                               <div class="flex">
+                                    <a href="new-article.html" onclick="storeData('${element._id}','${element.message}','${element.email}','${element.fullName});">
+                                  
+                               <a href="#">
+                                   <button id='${element._id}' onclick='delete_post(
+         this.id
+       )' class="delete-button">Delete</button>
+                           </td>
+                       </tr>
+                       `;
+                     })
+                     posts_div.innerHTML = dataToDisplay;
+                    // console.log(posts_div)
+               })
+               .catch(error => console.log('error', error));
+             } window.onload=getdataOnIndex();
         
-
-       
-            <!-- <script>
-                async function loadIntoTable(url,table){
-const tableHead= table.querySelector("thead");
-const tableBody= table.querySelector("tbody");
-const response= await fetch(url);
-const data= await response.json();
-console.log(data)
-tableHead.inerHTML = "<tr>/<?tr>"
-tableBody.inerHTML ="";
-for (const headerText of headers){
-   
-} -->
-
-                }
-    <script>           
-//   function getdataOnIndex()  {
-//      var posts_div = document.getElementById("posts");
-//      var dataToDisplay = "";
-//      var requestOptions = {
-//          method: 'GET',
-//          redirect: 'follow'
-        
-//        };
-      
-              
-//        fetch("https://giltechbland.herokuapp.com/api/v1/messages", requestOptions)
-//                 .then(response => response.json())
-//                 .then(result => {
-//                      console.log(result.data.messages)
-                   
-//                         result.data.messages.forEach(element=>{
-//                             dataToDisplay += `
-                
-//                             <td>
-//                                 ${element.name}
-//                             </td>
-//                             <td>
-//                                ${element.email}
-//                             </td>
-//                             <td>
-//                                 ${element.message}
-//                             </td>
-                            
-//                              <td>
-//                                           <button id="delete-message" onclick='delete_message
-//                                          ' class="delete-button">Delete</button>
-                                        
-//                                       </td>
-
-                                
-                                
-                            
-//                         </tr>
-//                         `;
-//                       })
-//                       posts_div.innerHTML = dataToDisplay;
-//                     //  console.log(blogs)
-//                 })
-                
-//                 .catch(error => console.log('error', error));    
-    
-//       } window.onload=getdataOnIndex();
-    
  
-</script>
+
+      
+  
+     function delete_post(id) {
+        let token = localStorage.getItem("token");
+        
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", token);
+  
+        var requestOptions = {
+          method: 'DELETE',
+          headers: myHeaders,
+          redirect: 'follow'
+        };
+  
+        fetch(`https://giltechbland.herokuapp.com/api/v1/messages${id}`, requestOptions)
+          .then(response => response.text())
+          .then(result => {
+            console.log(result)
+            alert("Message deleted successfully")
+            getdataOnIndex()
+
+
+          })
+
+        
+      
+        .catch(error => console.log('error', error));
+      }
+      
+      window.onload = getdataOnIndex();
+  
+    </script>
+
+
+ 
        
     </body>
 </html>

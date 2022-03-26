@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body{
-    background: -webkit-linear-gradient(0deg, rgb(70, 109, 70),rgb(109, 122, 167),rgb(108, 88, 134));
+    background-color:rgb(50, 70, 50);
     display: flex;
     justify-content: center;
     align-items: center;

@@ -79,18 +79,18 @@
         </div>
       </div>
     </nav>
-     <main> 
-      <section style="width: 100%;background-color: white;" class="container">
-          <!-- <div class="card article-card-queries">
+    <main>
+      <section style="width: 100%" class="container">
+          <div class="card article-card-queries">
             <h3 class="card-title">Blog</h3>
-            <div style="width:fit-content;" class="card-body"> -->
+            <div style="width:fit-content;" class="card-body">
               
-                  <table style="margin-left: 25%;" class="blogs-table">
+                  <table style="width: fit-content;" class="blogs-table">
                   
-                    <tbody style="width: 400px;"  id="posts">
+                    <tbody style="width: 300px;"  id="posts">
                         
                         <tr>
-                            <!-- <th style="background-color:rgb(50, 70, 50);width: 100%;" >
+                            <th style="background-color:rgb(50, 70, 50);width: 100%;" >
                             Recent blog post   
                             </th>
                            
@@ -100,7 +100,7 @@
                             
                             <th>Body</th>
                             <th>Action</th>
-                             -->
+                            
                            
                  </tr>
                     
@@ -139,7 +139,7 @@
             // console.log(result.data.blogs)
             result.data.blogs.forEach(element => {
               dataToDisplay += `
-                      
+                      <tr>
                                 <td>
                                   <dv  class="blogphoto" id="blog-photo"> 
                                 
@@ -170,7 +170,7 @@
             <a href="#">
                                        
                                 </td>
-                           
+                            </tr>
                             `;
             })
             posts_div.innerHTML = dataToDisplay;

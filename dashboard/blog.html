@@ -84,16 +84,16 @@
           <div class="card article-card-queries">
             <h3 class="card-title">Blog</h3>
             <div class="card-body">
-                <table class="blogs-table">
+                <table style="width: fit-content;" class="blogs-table">
                     <thead>
-                        <tr>
+                       
                             <th>Image</th>
-                            <th>Title</th>
+                            <!-- <th>Title</th>
                              <th>description</th> 
                             <th>Body</th>
-                            <th>Actions</th>
+                            <th>Actions</th> -->
                             
-                            </tr>
+                          
                     </thead>
                     <tbody id="posts">
                         
@@ -132,21 +132,25 @@
               dataToDisplay += `
                       <tr>
                                 <td>
-                                    <img src="${element.photo}">
+                                  <dv  class="blogphoto" id="blog-photo"> 
+                                
+                                <img id="blog-images" src="${element.photo}"/>  </dv> 
                                 </td>
                                 <td>
-                                  ${element.title} 
+                                  <div class="blogpost" id="blog-posts">
+                                <h1>${element.title}</h1>
                                 </td>
                                 <td>
-                                ${element.description}
+                                  <div class="blogpost" id="blog-posts">
+                                  <h2>${element.description}<h2>
                                 </td>
-                                <td>
-                                    ${element.body}
+                                <td> <div class="blogpost" id="blog-posts">
+                                  <p>${element.body}</p>
                                 </td>
                                
                                 <td>
                                     <div class="flex">
-                                         <a href="new-article.html" onclick="storeData('${element._id}','${element.title}','${element.body}','${element.photo}','${element.description}');">
+                                         <a href="new-article" onclick="storeData('${element._id}','${element.title}','${element.body}','${element.photo}','${element.description}');">
                                         <button>Update</button>
                                     </a>
                                     <a href="#">
@@ -154,13 +158,7 @@
               this.id
             )' class="delete-button">Delete</button>
             <a href="#">
-                                        <button id='${element._id}' onclick='comments(
-              this.id
-            )' class="combtn">comments</button>
-            <a href="#">
-                                        <button id='${element._id}' onclick='likes(
-              this.id
-            )' class="blog-id">likes</button>
+                                       
                                 </td>
                             </tr>
                             `;

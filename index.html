@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyBrand</title>
     <link rel="stylesheet" href="index.css">
+    
   <!-- <script src="./sendMessage.js"></script> -->
 
    
 </head>
 <body>
-    <div style="display: flex; justify-content: space-between; position: fixed; background-color:rgb(50, 70, 50);  padding-left: 20px;z-index: 1;">
+    <div style="display: flex; justify-content: space-between; position: fixed; background-color:rgb(50, 70, 50);  padding-left: 20px;z-index: 11;">
         <div class="logo"><em>GilTech</em></div>
-        <div class="menu"> <ul class="list2"><li><a href="#">Menu</a></li></ul></div>
+        
         <div class="nav" style=" left: 20px; margin-left: 400px;">
             
             <ul class="list">
@@ -23,7 +24,9 @@
                 <li><a href="#/Experiance">Experiance</a></li>
                 <li><a href="#/blog">Blog</a></li>
                 <li><a href="#/footer-f">Contact</a> </li>
-                <li> <a href="login.html"> <button>Login </button></a></li>
+                <li> <a href="login.html"> <button id="logoutBtn" >Login </button></a></li>
+                <li> <a href="signup.html"> <button>signup </button></a></li>
+
          </ul>
            
         
@@ -46,21 +49,21 @@
         <div class="skill-row">
             <div class="skill-card">
                 <center>
-                    <div class="number" style="background-color:rgb(50, 70, 50);">1</div>
+                    <div class="number" style="background-color: darkblue;">1</div>
                     <h1>Web development</h1>
                     <p>We are best developer in town</p>
                 </center>
             </div>
             <div class="skill-card">
                 <center>
-                    <div class="number" style="background-color:rgb(50, 70, 50);">2</div>
+                    <div class="number" style="background-color: darkblue;">2</div>
                     <h1>UI/UX Design</h1>
                     <p>We are best developer in town</p>
                 </center>
             </div>
             <div class="skill-card">
                 <center>
-                    <div class="number" style="background-color: rgb(50, 70, 50);">3</div>
+                    <div class="number" style="background-color: darkblue;">3</div>
                     <h1>Mobile App</h1>
                     <p>We are best developer in town</p>
                 </center>
@@ -96,14 +99,14 @@
     <section id="/blog" class="skills">
         <h1 style="padding-top: 200px; "> Gil-<span>Blogs</span></h1>
         <p>We are more like family Checkout trends</p>
-        <div style="display: block;" class="skill-row" id="posts">
+       
+        <div  class="skill-card" id="posts">
            
         </div>
     </section>
 
-    
-      <section id="/footer-f" class="footer-f">
-    <div class="footer" id="cont">
+    <section>
+        <div class="footer" id="cont">
             <div class="foot-div">
                 <h1>Gil Technology</h1>
                 <p>We are solution to any
@@ -121,7 +124,7 @@
                     <li>Login/ SignUp</li>
                 </ul>
             </div>
-            <div class="foot-div">
+            <div class="foot-div" >
                 <ul>
                     <li>Rwanda Kigali kg 655 st</li>
                     <li>+250780151067</li>
@@ -145,6 +148,8 @@
                 </form>
             </div>
         </section >
+        
+       
        
          <script>
          function getdataOnIndex()  {
@@ -163,7 +168,7 @@
                    
                         result.data.blogs.forEach(element=>{
                             dataToDisplay += `
-                            <div class="skill-card">
+                           
                                  <center>
                                      <img src="${element.photo}"/>
                                      <h1>${element.title}</h1>
@@ -171,12 +176,19 @@
                                      <h2>${element.description}<h2>
                                         <br>
                                         <p>${element.body}</p>
-                                     
-                                     <div>   <form>
-                            <textarea  style="width: 200px;height: 40px; background-color:rgb(183, 214, 224);" type="text" placeholder="comment...." class="foot-ta"></textarea>
-                            <button  style="width: 50px;height: 30px; background-color:rgb(183, 214, 224); border-radious:10px"    id="sendBtn">send
-        
-        </button>
+                                     </center>
+                                       <form>
+                            <textarea id="sendComment" style="width: 200px;height: 40px; background-color:rgb(183, 214, 224);" type="text" placeholder="comment...." class="foot-ta"></textarea>
+                            <input type="submit" name="send" id="send" value="send" 
+                    style="
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    padding: 5px;
+                    border: none;
+                    border-radius: 10px;
+                    background-color:rgb(183, 214, 224);
+                    margin-bottom:20px;
+                    "/>
         </form>
                        </div>      
 
@@ -240,5 +252,55 @@ sendQuerry.addEventListener('click', async (e) => {
       </script>
       
   
+
+
+
+      <script>
+
+        const apiUrl = 'https://giltechbland.herokuapp.com/'
+        const comment = () => {
+            const form = document.getElementById('sendComment').value
+            
+            
+            const comment = {comment}
+            return comment
+        }
+        const clearForm = () => {
+            const contactForm = document.getElementById('sendComment')
+            sendComment.reset()
+            return false
+         }
+        const send = document.getElementById('send')
+        send.addEventListener('click', async (e) => {
+            //  postNewQuerry()
+            e.preventDefault();
+            console.log("clicked");
+          try{
+           const response =  await  fetch(apiUrl + "api/v1/blogs/$(id)/comment", {
+                method: 'POST',
+               headers: {
+                    'Content-Type': 'application/json',
+                     'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                   fullName: messageFormData().fullName,
+                   email: messageFormData().email,
+                  
+                   message: messageFormData().message
+                })
+            })
+            const data = await response.json()
+            console.log(data)
+           }catch(error){
+             console.log(error);
+           }
+        })
+        
+        localStorage.removeItem("id");
+        localStorage.removeItem("title");
+        localStorage.removeItem("body");
+        localStorage.removeItem("description");
+        localStorage.removeItem("image");
+              </script>
 </body>
 </html>

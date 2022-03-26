@@ -146,7 +146,7 @@
                                
                                 <td>
                                     <div class="flex">
-                                         <a href="new-article.html" onclick="storeData('${element._id}','${element.title}','${element.body}','${element.image}','${element.description}');">
+                                         <a href="new-article.html" onclick="storeData('${element._id}','${element.title}','${element.body}','${element.photo}','${element.description}');">
                                         <button>Update</button>
                                     </a>
                                     <a href="#">
@@ -172,13 +172,14 @@
   
       }
   
-      function storeData(id, title, body, image, description) {
+      function storeData(id, title, body, photo, description) {
         // console.log("done");
         localStorage.setItem("id", id);
         localStorage.setItem("title", title);
         localStorage.setItem("body", body);
         localStorage.setItem("description", description);
-        localStorage.setItem("image", image);
+        localStorage.setItem("photo", photo);
+      
       }
   
       function delete_post(id) {

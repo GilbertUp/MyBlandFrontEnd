@@ -5,7 +5,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .header{
-    background: -webkit-linear-gradient(0deg, rgb(70, 109, 70),rgb(109, 122, 167),rgb(108, 88, 134));   
+   background-color: white;  
     padding: 30px;
     color: lightblue;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -62,6 +62,7 @@
     text-align: center;
     font-weight: lighter;
     font-size: 3rem;
+    color: rgb(50, 70, 50); 
 }
 .photo{
     position: absolute;
@@ -77,6 +78,7 @@
 .welcome p{
     font-size: 2rem;
     margin-top: 10px;
+    color: rgb(50, 70, 50); ;
 }
 .welcome button{
     background-color: rgb(1, 51, 1);
@@ -114,16 +116,10 @@
     padding-top: 30px;
 }
 .skill-row{
-    display: block;
-    text-align: center;
-    align-items: center;
+    display: inline-flex;
+    justify-content: space-between;
     width: 100%;
     margin-top: 50px;
-    border: none;
-}
-.skill-row{
-    
-    text-overflow: inherit;
 }
 .skill-row .number{
     background-color: rgb(218, 214, 214);
@@ -136,12 +132,21 @@
     margin-top: -35px;
 }
 .skill-card{
-    display: inline-block;
-    background-color:white;
-    width: 100%;
+    background-color: rgb(218, 214, 214);
+    width: 30%;
     padding: 10px;
     border-radius: 10px ;
-    border: 2px solid rgb(218, 214, 214);
+    display: inline-block;
+
+
+
+}
+.skill-card2{
+    background-color: rgb(218, 214, 214);
+    width: 50%;
+    padding: 10px;
+    display:inline-block;
+    
 
 
 }
@@ -211,7 +216,7 @@
     background-color: rgba(34, 58, 138, 0.705);
 }
 
-}
+
 .Experiance .view span .course:hover{
     box-shadow: 0px 0px 300px  rgb(11, 20, 136);
     transition: ease-in-out 0.5s;
@@ -296,7 +301,7 @@ a{
   
 }
 .skill-card img{
-    height: 150px;
+    width: 150px;
     border-radius: 10px;
 }
 .footer{
@@ -308,17 +313,19 @@ a{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background: -webkit-linear-gradient(0deg, rgb(70, 109, 70),rgb(109, 122, 167),rgb(108, 88, 134));
+   background-color: rgb(50, 70, 50); 
     color: lightblue;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 500;
     height: 500px;
     border-radius: 10px 10px 0px 0px;
+    bottom: 0;
+    position: relative;
 }  
 .foot-div{
     padding-bottom: 300px;
     width: 25%;
-    height: 10px;
+    height: 5px;
 }
 
 .foot-div h1{
@@ -353,7 +360,56 @@ a{
 }
 
 .footer{
+    height: 200px;
+}
+.footer-f{
+    padding-top: 200px;
+}
+.menu .list2 {
+    display: none;
+   
+}
+.menu .list2 li{
+    list-style: none;
+  padding-left: 300px;
+    font-size: 1.5rem;
+    color: rgb(183, 214, 224);
+    padding-top: 35px;
+   
+}
+@media(max-width:800px)
+{
+    .menu .list2  {
+        display: flex;
+    }
+    .nav{
+        float: right;
+        border-radius: 0px;
+        width:250vh;
+    }
+    .nav ul{
+        display:inline-block;
+    }
+    .nav ul li{
+        list-style: none;
+        margin-left: 20px;
+        margin-right: 300px;
+        font-size: 1.5rem;
+        color: rgb(183, 214, 224);
+        padding-top: 20px;
+        .nav{
+            height: 30px;
+        }
+    }
+    
+}
+
+   
+.footer{
     height: 400px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 .footer-f{
     padding-top: 200px;

@@ -125,11 +125,17 @@
           }
           getDataForm();
           let token = localStorage.getItem("token");
-          async function addDataToCollection(title, description, image, body) {
-      
+          async function addDataToCollection(title, description, photo, body) {
+            const formData = new FormData();
+        formData.append("title", title)
+        formData.append("description", description,)
+        formData.append("body", body)
+        
+        formData.append("photo", photo)
             var myHeaders = new Headers();
             myHeaders.append("Authorization", token);
-            myHeaders.append("Content-Type", "application/json");
+            // myHeaders.append("Content-Type", "application/json");
+
       
             var raw = JSON.stringify({
               "title": title,
@@ -141,11 +147,11 @@
             var requestOptions = {
               method: 'POST',
               headers: myHeaders,
-              body: raw,
+              body: formData,
               redirect: 'follow'
             };
       
-            fetch("https://giltechbland.herokuapp.com/api/v1/blogs", requestOptions)
+            fetch("https://giltechbland.herokuapp.com/api/v1/addBlog", requestOptions)
               .then(response => response.json())
               .then(result => {
                 console.log(result)
@@ -160,7 +166,7 @@
             event.preventDefault()
             let title = document.getElementById("title").value;
             let description = document.getElementById("description").value;
-            let photo = document.getElementById("image").value;
+            let photo = document.getElementById("image").files[0]
             let body = document.getElementById("body").value;
             let id = localStorage.getItem('id');
             if (id) {

@@ -79,25 +79,34 @@
         </div>
       </div>
     </nav>
-    <main>
-      <section class="container">
-          <div class="card article-card-queries">
+     <main> 
+      <section style="width: 100%;background-color: white;" class="container">
+          <!-- <div class="card article-card-queries">
             <h3 class="card-title">Blog</h3>
-            <div class="card-body">
-                <table style="width: fit-content;" class="blogs-table">
-                    <thead>
-                       
-                            <th>Image</th>
-                            <!-- <th>Title</th>
-                             <th>description</th> 
-                            <th>Body</th>
-                            <th>Actions</th> -->
-                            
-                          
-                    </thead>
-                    <tbody id="posts">
+            <div style="width:fit-content;" class="card-body"> -->
+              
+                  <table style="margin-left: 25%;" class="blogs-table">
+                  
+                    <tbody style="width: 400px;"  id="posts">
                         
+                        <tr>
+                            <!-- <th style="background-color:rgb(50, 70, 50);width: 100%;" >
+                            Recent blog post   
+                            </th>
+                           
+                            <th>Title</th> 
+
+                             <th>Description</th> 
+                            
+                            <th>Body</th>
+                            <th>Action</th>
+                             -->
+                           
+                 </tr>
+                    
                     </tbody>
+                </table>
+                </table>
                 </table>
             </div>
         </div>
@@ -130,15 +139,16 @@
             // console.log(result.data.blogs)
             result.data.blogs.forEach(element => {
               dataToDisplay += `
-                      <tr>
+                      
                                 <td>
                                   <dv  class="blogphoto" id="blog-photo"> 
                                 
                                 <img id="blog-images" src="${element.photo}"/>  </dv> 
                                 </td>
+                              
                                 <td>
                                   <div class="blogpost" id="blog-posts">
-                                <h1>${element.title}</h1>
+                                <h1>${element.title}</h1></dv>
                                 </td>
                                 <td>
                                   <div class="blogpost" id="blog-posts">
@@ -150,7 +160,7 @@
                                
                                 <td>
                                     <div class="flex">
-                                         <a href="new-article" onclick="storeData('${element._id}','${element.title}','${element.body}','${element.photo}','${element.description}');">
+                                         <a href="new-article.html" onclick="storeData('${element._id}','${element.title}','${element.body}','${element.photo}','${element.description}');">
                                         <button>Update</button>
                                     </a>
                                     <a href="#">
@@ -160,7 +170,7 @@
             <a href="#">
                                        
                                 </td>
-                            </tr>
+                           
                             `;
             })
             posts_div.innerHTML = dataToDisplay;

@@ -41,6 +41,10 @@ input:hover{
 }
 a{
     text-decoration: none
+    
+}
+p a{
+    color:rgb(50, 70, 50) ;
 }
 h1{
     text-align: center;

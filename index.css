@@ -441,15 +441,27 @@ a{
 #posts{
 
     background-color:white;
-    float: none;
+    float:none;
     scroll-behavior: smooth;
     align-items: center;
     text-align: center;
-    margin-left: 50px;
+    margin-left: 5%;
     padding-top: 30px;
     margin-top: 30px;
     width: fit-content;
+padding-bottom: 1%;
 
+}
+
+.blogpost{
+    color:black;
+    text-align: center;
+    display:block;
+    border-end-end-radius: 3px;
+    
+}
+.blogpost,h1,p{
+    margin-left: 20px;
 }
 #blog-images{
 
@@ -469,6 +481,7 @@ a{
 #cont{
     padding-top: -500px;
     margin-top: 200px;
+    c
 }
 /* .foot-ta{
     margin-left: 1px;
